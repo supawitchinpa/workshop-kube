@@ -1,6 +1,7 @@
 name: workflows
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+ workflow_dispatch:
 jobs:
   bulidimages:
     runs-on: ubuntu-latest

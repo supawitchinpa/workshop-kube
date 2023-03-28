@@ -10,7 +10,9 @@ jobs:
       - name: login 
         run: docker login -u supawitchinpa -p wiit14112539
       - name: build image
-        run: docker build -t cicd:1.0 .
+        run: |
+          cd workshop-kube
+          docker build -t cicd:1.0 .
       - name: tag
         run: docker tag cicd:1.0 supawitchinpa/cicd:1.0
       - name: push

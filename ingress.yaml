@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: supawiting
+spec:
+  ingressClassName: nginx
+  rules:
+      - host: supawit.random.lab
+        http:
+          paths:
+            - pathType: Prefix
+              backend:
+                service:
+                  name: svc-custerip
+                  port:
+                    number: 3000
+              path: /random

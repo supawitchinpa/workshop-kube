@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webrandom
+  labels:
+    app: supawit
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: supawit-app
+  template:
+    metadata:
+      labels:
+        app: supawit-app
+    spec:
+      containers:
+      - name: supawitwebrandom
+        image: supawitchinpa/webrandom:1.0
+        ports:
+        - containerPort: 3000

@@ -1,20 +1,16 @@
-name: workflows
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: Lab-Workflow
 on:
- workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
-  bulidimages:
+  build: 
     runs-on: ubuntu-latest
     steps:
-      - name: check out
-        run: git clone https://github.com/supawitchinpa/workshop-kube.git
-      - name: login 
-        run: docker login -u supawitchinpa -p wiit14112539
-      - name: build image
-        run: |
-          cd workshop-kube
-          docker build -t cicd:1.0 .
-      - name: tag
-        run: docker tag cicd:1.0 supawitchinpa/cicd:1.0
-      - name: push
-        run: docker push supawitchinpa/cicd:1.0
+      - name: check github environment
+        run: hostname
+  deploy: 
+    runs-on: self-hosted
+    steps:
+      - name: check github environment
+        run: hostname
